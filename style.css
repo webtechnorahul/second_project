@@ -1,7 +1,13 @@
+@font-face {
+  font-family: newfont;
+  src: url("./simple.ttf");
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
 }
 
 html, body {
@@ -20,9 +26,11 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 200;
   border: 2px solid blueviolet;
 }
-main header, main section, main footer {
+main header, main section {
   max-width: 2000px;
 }
 main header {
@@ -113,21 +121,21 @@ main section.view1 .bottom img {
 }
 main .container {
   width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: linear-gradient(to left top, #e3469a, #8d1cb7);
+  padding: 2rem;
 }
 main .container ol {
-  display: flex;
-  gap: 3rem;
-  align-items: center;
-  justify-content: space-around;
+  display: inline-block;
   list-style: none;
-  font-size: 2rem;
-  font-weight: bold;
-  overflow-x: scroll;
-  background: linear-gradient(to left top, #e3469a, #8d1cb7);
-  padding: 1rem 2rem;
+  animation: scroll-left 8s linear infinite;
 }
-main .container ol::-webkit-scrollbar {
-  display: none;
+main .container ol li {
+  display: inline-block;
+  padding: 0 2rem;
+  font-size: 2rem;
 }
 main section.view2 {
   width: 100%;
@@ -267,7 +275,7 @@ main div.view3 .bottom {
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 5rem;
 }
 main div.view3 .bottom .card {
   width: 100%;
@@ -374,7 +382,7 @@ main section.view4 .bottom .image img {
   border-bottom-left-radius: 40%;
   border-bottom-right-radius: 40%;
 }
-main section.view5 {
+main div.view5 {
   width: 100%;
   padding: 3rem 2rem;
   display: flex;
@@ -384,17 +392,17 @@ main section.view5 {
   text-align: center;
   align-items: center;
 }
-main section.view5 .card {
+main div.view5 .card {
   width: 100%;
   text-align: center;
   background-color: white;
   border-radius: 20px;
   padding: 1rem;
 }
-main section.view5 .card p {
+main div.view5 .card p {
   padding: 1rem 0rem;
 }
-main section.view5 .card form {
+main div.view5 .card form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -402,13 +410,13 @@ main section.view5 .card form {
   justify-content: center;
   gap: 1rem;
 }
-main section.view5 .card form input, main section.view5 .card form button {
+main div.view5 .card form input, main div.view5 .card form button {
   font-size: 1rem;
   border-radius: 10px;
   padding: 0.4rem;
 }
-main section.view5 .card form button {
-  font-size: 2rem;
+main div.view5 .card form button {
+  font-size: 1.3rem;
   font-family: bold;
   color: whitesmoke;
   background: linear-gradient(to left, rgb(240, 12, 122), rgb(60, 47, 253));
@@ -417,6 +425,7 @@ main footer {
   width: 100%;
   background: linear-gradient(to top left, rgba(224, 56, 84, 0.605), rgba(7, 7, 226, 0.728));
   color: rgb(252, 249, 249);
+  padding-top: 1rem;
 }
 main footer .top {
   width: 100%;
@@ -465,6 +474,17 @@ main footer .bottom h2 {
   main section.view4 .bottom {
     width: 70%;
   }
+  main .container ol {
+    animation: scroll-left 8s linear infinite;
+  }
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(10%);
+    }
+    100% {
+      transform: translateX(-70%);
+    }
+  }
 }
 @media (min-width: 750px) {
   main section.view2 .top input {
@@ -492,7 +512,16 @@ main footer .bottom h2 {
   }
   main div.view3 .bottom {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+  }
+  main .container {
+    padding: 1.5rem;
+    overflow-x: scroll;
+    display: grid;
+    place-content: center;
+  }
+  main .container::-webkit-scrollbar {
+    display: none;
   }
   main section.view4 {
     flex-direction: row;
@@ -512,10 +541,15 @@ main footer .bottom h2 {
     width: 100%;
     text-align: center;
   }
-  main section.view5 .card {
+  main div.view5 .card {
     width: 50%;
   }
+  main footer {
+    display: grid;
+    place-content: center;
+  }
   main footer .top {
+    max-width: 2000px;
     flex-direction: row;
   }
 }
@@ -562,8 +596,17 @@ main footer .bottom h2 {
   main section.view1 .top button, main section.view1 .top h3 a, main section.view1 .top h3 {
     font-size: 1.7rem;
   }
-  main .container ol {
-    padding: 2.5rem 2rem;
-    justify-content: space-around;
+  main div.view3 .main_container {
+    max-width: 3000px;
+    width: 100%;
+    display: grid;
+    place-content: center;
+  }
+  main div.view3 .main_container .bottom {
+    padding: 1rem 2rem;
+    justify-content: space-between;
+  }
+  main div.view3 .main_container .bottom .card {
+    width: 100%;
   }
 }
